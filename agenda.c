@@ -11,3 +11,7 @@ int insert (cabecalho *cabeca, contato c) {
   
 	return 1;
 }
+
+int deletar (cabecalho *cabeca, contato c) {
+	
+}
