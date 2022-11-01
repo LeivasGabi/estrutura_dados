@@ -7,12 +7,14 @@ typedef struct{
 
 typedef struct{
 	contato dado;
-  	struct tipoNo* proximo;
-  	struct tipoNo* anterior;
-} tipoNo;
+  	struct no* proximo;
+	struct no* anterior;
+} no;
 
 typedef struct {
-    tipoNo* primeiro;
-	tipoNo* ultimo;
-    int tamanho;
+	no* primeiro;
+	no* ultimo;
+	int tamanho;
 } cabecalho;
+
+int insert (cabecalho *cabeca, contato c); 
