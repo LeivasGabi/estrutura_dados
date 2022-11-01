@@ -18,3 +18,4 @@ typedef struct {
 } cabecalho;
 
 int insert (cabecalho *cabeca, contato c); 
+int deletar (cabecalho *cabeca, contato c);
