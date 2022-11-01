@@ -1,6 +1,7 @@
 #include <stdio.h>
+#include "agenda.h"
 
-#define TEXTO_DO_MENU "1- Buscar Contato \n2- Inserir Contato \n3- Remover Contato 0- Sair"
+#define TEXTO_DO_MENU "1- Buscar Contato \n2- Inserir Contato \n3- Remover Contato \n0- Sair \n"
 
 #define BUSCAR_CONTATO 1
 #define INSERIR_CONTATO 2
@@ -11,13 +12,14 @@
 int main()
 {
     int opcao;
+    cabecalho cabeca; 
 
     do
     {
-        printf(MENU_TEXT);
+        printf(TEXTO_DO_MENU);
         scanf("%i", &opcao);
 
-        switch (option)
+        switch (opcao)
         {
         case BUSCAR_CONTATO:
             // Chamar funcao de buscar contato
@@ -39,8 +41,7 @@ int main()
             printf("Opcao invalida!\n");
             break;
         }
-    } while (option != SAIR);
+    } while (opcao != SAIR);
 
-    return false;
+    return 0;
 }
-
