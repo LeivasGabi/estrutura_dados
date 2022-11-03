@@ -1,5 +1,7 @@
 #include <stdio.h>
+#include <string.h>
 #include "agenda.h"
+#include <stdlib.h>
 
 #define TEXTO_DO_MENU "1- Buscar Contato \n2- Inserir Contato \n3- Remover Contato \n0- Sair \n"
 
@@ -13,6 +15,10 @@ int main()
 {
     int opcao;
     Cabecalho cabecalho;
+    Contato contato;
+    int retorno;
+    
+    inicializar(&cabecalho);
 
     do
     {
@@ -27,7 +33,15 @@ int main()
 
         case INSERIR_CONTATO:
             // Chamar funcao de inserir contato
-            inserir(&cabecalho);
+            strcpy(contato.nome, "Leonardo");
+            strcpy(contato.sobrenome, "Marcos");
+            strcpy(contato.email, "leonardo@gmail.com");
+            strcpy(contato.fone, "519813123123");
+
+            retorno = inserir(&cabecalho, contato);
+            
+            printf("retorno da insercao: %d \n", retorno);
+
             break;
 
         case REMOVER_CONTATO:

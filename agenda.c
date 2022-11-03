@@ -3,7 +3,13 @@
 #include "agenda.h"
 #include <stdlib.h>
 
-int inserir (Cabecalho *cabeca, Contato contato) {
+void inicializar (Cabecalho *cabecalho) {
+    cabecalho -> primeiro = NULL;
+    cabecalho -> ultimo = NULL;
+    cabecalho -> tamanho = 0;
+}
+
+int inserir (Cabecalho *cabecalho, Contato contato) {
 	No *novoNo = (No*)malloc(sizeof(No));
 	int retorno, continua;
 	
@@ -17,10 +23,14 @@ int inserir (Cabecalho *cabeca, Contato contato) {
 	strcpy(novoNo -> dado.email, contato.email);
 	strcpy(novoNo -> dado.fone, contato.fone);
 	
-	do {
-		
-	} while (continua != 0);
 	
+	
+	if (cabecalho -> primeiro == NULL) {
+	    cabecalho -> primeiro = novoNo;
+	    
+	    return 1;
+	}
+
 	return 1;
 }
 

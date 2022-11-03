@@ -19,3 +19,4 @@ typedef struct {
 
 int inserir (Cabecalho *cabecalho, Contato contato); 
 int deletar (Cabecalho *cabecalho, Contato contato);
+void inicializar (Cabecalho *cabecalho);
