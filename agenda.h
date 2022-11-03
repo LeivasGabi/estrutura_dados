@@ -2,20 +2,20 @@ typedef struct{
 	char nome[100];
 	char sobrenome[100];
 	char email[150];
-	char fone[15]
-} contato;
+	char fone[15];
+} Contato;
 
 typedef struct{
-	contato dado;
-  	struct no* proximo;
-	struct no* anterior;
-} no;
+	Contato dado;
+  	struct No* proximo;
+	struct No* anterior;
+} No;
 
 typedef struct {
-	no* primeiro;
-	no* ultimo;
+	No* primeiro;
+	No* ultimo;
 	int tamanho;
-} cabecalho;
+} Cabecalho;
 
-int insert (cabecalho *cabeca, contato c); 
-int deletar (cabecalho *cabeca, contato c);
+int insert (Cabecalho *cabecalho, Contato contato); 
+int deletar (Cabecalho *cabecalho, Contato contato);

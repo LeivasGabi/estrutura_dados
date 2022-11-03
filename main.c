@@ -12,7 +12,7 @@
 int main()
 {
     int opcao;
-    cabecalho cabeca; 
+    Cabecalho cabecalho;
 
     do
     {
@@ -27,6 +27,7 @@ int main()
 
         case INSERIR_CONTATO:
             // Chamar funcao de inserir contato
+            inserir(&cabecalho);
             break;
 
         case REMOVER_CONTATO:
