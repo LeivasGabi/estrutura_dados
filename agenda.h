@@ -17,5 +17,5 @@ typedef struct {
 	int tamanho;
 } Cabecalho;
 
-int insert (Cabecalho *cabecalho, Contato contato); 
+int inserir (Cabecalho *cabecalho, Contato contato); 
 int deletar (Cabecalho *cabecalho, Contato contato);
