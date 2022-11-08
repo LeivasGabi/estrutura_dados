@@ -25,6 +25,7 @@ main ()
     {
       printf (TEXTO_DO_MENU);
       scanf ("%i", &opcao);
+      getchar ();
 
       switch (opcao)
 	{
@@ -33,8 +34,6 @@ main ()
 	  break;
 
 	case INSERIR_CONTATO:
-	  getchar ();
-
 	  printf ("Digite o nome: ");
 	  fgets (contato.nome, sizeof (contato.nome), stdin);
 
