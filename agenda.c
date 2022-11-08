@@ -68,12 +68,12 @@ inserir (Cabecalho * cabecalho, Contato contato)
   strcpy (novoNo->dado.fone, contato.fone);
   novoNo->proximo = NULL;
   novoNo->anterior = NULL;
+  cabecalho->tamanho++;
 
   if (cabecalho->primeiro == NULL)	// Primeira insercao
     {
       cabecalho->primeiro = novoNo;
       cabecalho->ultimo = novoNo;
-      cabecalho->tamanho++;
 
       return true;
     }
@@ -87,7 +87,6 @@ inserir (Cabecalho * cabecalho, Contato contato)
       novoNo->proximo = noDeAjuda;
       noDeAjuda->anterior = novoNo;
       cabecalho->primeiro = novoNo;
-      cabecalho->tamanho++;
 
       return true;
     }
@@ -97,7 +96,6 @@ inserir (Cabecalho * cabecalho, Contato contato)
       cabecalho->ultimo->proximo = novoNo;
       novoNo->anterior = cabecalho->ultimo;
       cabecalho->ultimo = novoNo;
-      cabecalho->tamanho++;
 
       return true;
     }
@@ -112,7 +110,6 @@ inserir (Cabecalho * cabecalho, Contato contato)
   novoNo->anterior = noDeAjuda->anterior;
   noDeAjuda->anterior = novoNo;
   novoNo->proximo = noDeAjuda;
-  cabecalho->tamanho++;
 
   return true;
 }
