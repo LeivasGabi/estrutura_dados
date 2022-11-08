@@ -1,39 +1,123 @@
 #include <stdio.h>
 #include <string.h>
-#include "agenda.h"
 #include <stdlib.h>
+#include "agenda.h"
 
-void inicializar (Cabecalho *cabecalho) {
-    cabecalho -> primeiro = NULL;
-    cabecalho -> ultimo = NULL;
-    cabecalho -> tamanho = 0;
+#define false 0
+#define true 1
+
+void
+inicializar (Cabecalho * cabecalho)
+{
+  cabecalho->primeiro = NULL;
+  cabecalho->ultimo = NULL;
+  cabecalho->tamanho = 0;
 }
 
-int inserir (Cabecalho *cabecalho, Contato contato) {
-	No *novoNo = (No*)malloc(sizeof(No));
-	int retorno, continua;
-	
-	
-	if(novoNo == NULL){
-		return 0;
+int
+descobrirPosicao (Cabecalho * cabecalho, char sobrenome[])
+{
+  int retornoDaFuncao = 0, retornoCondicao = 0, continua;
+  No *proximoNo = cabecalho->primeiro;
+
+  do
+    {
+      retornoCondicao = strcmp (sobrenome, proximoNo->dado.sobrenome);
+
+      if (retornoCondicao < 0)
+	{
+	  continua = false;
+	}
+      else
+	{
+	  retornoDaFuncao++;
+
+	  if (proximoNo->proximo != NULL)
+	    {
+	      proximoNo = proximoNo->proximo;
+	    }
+	  else
+	    {
+	      continua = false;
+	    }
 	}
 
-	strcpy(novoNo -> dado.nome, contato.nome);
-	strcpy(novoNo -> dado.sobrenome, contato.sobrenome);
-	strcpy(novoNo -> dado.email, contato.email);
-	strcpy(novoNo -> dado.fone, contato.fone);
-	
-	
-	
-	if (cabecalho -> primeiro == NULL) {
-	    cabecalho -> primeiro = novoNo;
-	    
-	    return 1;
-	}
+    }
+  while (continua != false);
 
-	return 1;
+  return retornoDaFuncao;
 }
 
-int deletar (Cabecalho *cabecalho, Contato contato) {
-	
+int
+inserir (Cabecalho * cabecalho, Contato contato)
+{
+  No *novoNo = (No *) malloc (sizeof (No));
+  int i = 0, posicao = 0, continua = 0;
+  No *noDeAjuda;
+
+
+  if (novoNo == NULL)
+    {
+      printf ("Problemas ao criar um novo no!");
+      return false;
+    }
+
+  strcpy (novoNo->dado.nome, contato.nome);
+  strcpy (novoNo->dado.sobrenome, contato.sobrenome);
+  strcpy (novoNo->dado.email, contato.email);
+  strcpy (novoNo->dado.fone, contato.fone);
+  novoNo->proximo = NULL;
+  novoNo->anterior = NULL;
+
+  if (cabecalho->primeiro == NULL)	// Primeira insercao
+    {
+      cabecalho->primeiro = novoNo;
+      cabecalho->ultimo = novoNo;
+      cabecalho->tamanho++;
+
+      return true;
+    }
+
+  posicao = descobrirPosicao (cabecalho, contato.sobrenome);
+
+  noDeAjuda = cabecalho->primeiro;
+
+  if (posicao == 0)		// Antes do Primeiro
+    {
+      novoNo->proximo = noDeAjuda;
+      noDeAjuda->anterior = novoNo;
+      cabecalho->primeiro = novoNo;
+      cabecalho->tamanho++;
+
+      return true;
+    }
+
+  if (posicao == cabecalho->tamanho) // Ultimo
+    {
+      cabecalho->ultimo->proximo = novoNo;
+      novoNo->anterior = cabecalho->ultimo;
+      cabecalho->ultimo = novoNo;
+      cabecalho->tamanho++;
+
+      return true;
+    }
+
+  for (i = 0; i < posicao; i++) // Qualquer outro
+    {
+      noDeAjuda = noDeAjuda->proximo;
+    }
+
+  noDeAjuda->anterior->proximo = novoNo;
+  novoNo->anterior = noDeAjuda->anterior;
+  noDeAjuda->anterior = novoNo;
+  novoNo->proximo = noDeAjuda;
+  cabecalho->tamanho++;
+
+  return true;
+}
+
+int
+deletar (Cabecalho * cabecalho, Contato contato)
+{
+
 }

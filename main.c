@@ -11,52 +11,97 @@
 #define SAIR 0
 
 
-int main()
+int
+main ()
 {
-    int opcao;
-    Cabecalho cabecalho;
-    Contato contato;
-    int retorno;
-    
-    inicializar(&cabecalho);
+  int opcao;
+  Cabecalho cabecalho;
+  Contato contato, contatoDois, contatoTres, contatoQuatro;
+  int retorno;
 
-    do
+  inicializar (&cabecalho);
+
+  do
     {
-        printf(TEXTO_DO_MENU);
-        scanf("%i", &opcao);
+      printf (TEXTO_DO_MENU);
+      scanf ("%i", &opcao);
 
-        switch (opcao)
-        {
-        case BUSCAR_CONTATO:
-            // Chamar funcao de buscar contato
-            break;
+      switch (opcao)
+	{
+	case BUSCAR_CONTATO:
+	  // Chamar funcao de buscar contato
+	  break;
 
-        case INSERIR_CONTATO:
-            // Chamar funcao de inserir contato
-            strcpy(contato.nome, "Leonardo");
-            strcpy(contato.sobrenome, "Marcos");
-            strcpy(contato.email, "leonardo@gmail.com");
-            strcpy(contato.fone, "519813123123");
+	case INSERIR_CONTATO:
+	  // Chamar funcao de inserir contato
+	  strcpy (contato.nome, "Ricardo");
+	  strcpy (contato.sobrenome, "Balao");
+	  strcpy (contato.email, "ricardo@gmail.com");
+	  strcpy (contato.fone, "519813123123");
 
-            retorno = inserir(&cabecalho, contato);
-            
-            printf("retorno da insercao: %d \n", retorno);
+	  retorno = inserir (&cabecalho, contato);
+	  printf ("tamanho %d \n", cabecalho.tamanho);
 
-            break;
+	  strcpy (contatoDois.nome, "Adriano");
+	  strcpy (contatoDois.sobrenome, "Casa");
+	  strcpy (contatoDois.email, "adriano_casa@gmail.com");
+	  strcpy (contatoDois.fone, "519813123123");
 
-        case REMOVER_CONTATO:
-            // Chamar funcao de remover contato
-            break;
+	  retorno = inserir (&cabecalho, contatoDois);
+	  printf ("tamanho %d \n", cabecalho.tamanho);
 
-        case SAIR:
-            printf("Adeus\n");
-            break;
+	  strcpy (contatoTres.nome, "Roberto");
+	  strcpy (contatoTres.sobrenome, "Dado");
+	  strcpy (contatoTres.email, "roberto_dado@gmail.com");
+	  strcpy (contatoTres.fone, "519813123123");
 
-        default:
-            printf("Opcao invalida!\n");
-            break;
-        }
-    } while (opcao != SAIR);
+	  retorno = inserir (&cabecalho, contatoTres);
+	  printf ("tamanho %d \n", cabecalho.tamanho);
 
-    return 0;
+	  strcpy (contatoQuatro.nome, "Carlos");
+	  strcpy (contatoQuatro.sobrenome, "Azul");
+	  strcpy (contatoQuatro.email, "carlos_azul@gmail.com");
+	  strcpy (contatoQuatro.fone, "519813123123");
+
+	  retorno = inserir (&cabecalho, contatoQuatro);
+	  printf ("tamanho %d \n", cabecalho.tamanho);
+
+	  printf ("%s \n", cabecalho.primeiro->dado.sobrenome);
+	  printf ("%s \n",
+		  cabecalho.primeiro->proximo->anterior->dado.sobrenome);
+
+	  printf ("%s \n", cabecalho.primeiro->proximo->dado.sobrenome);
+	  printf ("%s \n",
+		  cabecalho.primeiro->proximo->proximo->anterior->dado.
+		  sobrenome);
+
+	  printf ("%s \n",
+		  cabecalho.primeiro->proximo->proximo->dado.sobrenome);
+	  printf ("%s \n",
+		  cabecalho.primeiro->proximo->proximo->proximo->anterior->
+		  dado.sobrenome);
+
+	  printf ("%s \n",
+		  cabecalho.primeiro->proximo->proximo->proximo->dado.
+		  sobrenome);
+	  printf ("%s \n", cabecalho.ultimo->dado.sobrenome);
+
+	  break;
+
+	case REMOVER_CONTATO:
+	  // Chamar funcao de remover contato
+	  break;
+
+	case SAIR:
+	  printf ("Adeus\n");
+	  break;
+
+	default:
+	  printf ("Opcao invalida!\n");
+	  break;
+	}
+    }
+  while (opcao != SAIR);
+
+  return 0;
 }
