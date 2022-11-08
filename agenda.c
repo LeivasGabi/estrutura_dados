@@ -102,7 +102,8 @@ inserir (Cabecalho * cabecalho, Contato contato)
       return true;
     }
 
-  for (i = 0; i < posicao; i++) // Qualquer outro
+  // Qualquer outro
+  for (i = 0; i < posicao; i++) 
     {
       noDeAjuda = noDeAjuda->proximo;
     }

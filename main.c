@@ -16,7 +16,7 @@ main ()
 {
   int opcao;
   Cabecalho cabecalho;
-  Contato contato, contatoDois, contatoTres, contatoQuatro;
+  Contato contato;
   int retorno;
 
   inicializar (&cabecalho);
@@ -33,59 +33,22 @@ main ()
 	  break;
 
 	case INSERIR_CONTATO:
-	  // Chamar funcao de inserir contato
-	  strcpy (contato.nome, "Ricardo");
-	  strcpy (contato.sobrenome, "Balao");
-	  strcpy (contato.email, "ricardo@gmail.com");
-	  strcpy (contato.fone, "519813123123");
+	  getchar ();
+
+	  printf ("Digite o nome: ");
+	  fgets (contato.nome, sizeof (contato.nome), stdin);
+
+	  printf ("Digite o sobrenome: ");
+	  fgets (contato.sobrenome, sizeof (contato.sobrenome), stdin);
+
+	  printf ("Digite o email: ");
+	  fgets (contato.email, sizeof (contato.email), stdin);
+
+	  printf ("Digite o fone: ");
+	  fgets (contato.fone, sizeof (contato.fone), stdin);
 
 	  retorno = inserir (&cabecalho, contato);
-	  printf ("tamanho %d \n", cabecalho.tamanho);
-
-	  strcpy (contatoDois.nome, "Adriano");
-	  strcpy (contatoDois.sobrenome, "Casa");
-	  strcpy (contatoDois.email, "adriano_casa@gmail.com");
-	  strcpy (contatoDois.fone, "519813123123");
-
-	  retorno = inserir (&cabecalho, contatoDois);
-	  printf ("tamanho %d \n", cabecalho.tamanho);
-
-	  strcpy (contatoTres.nome, "Roberto");
-	  strcpy (contatoTres.sobrenome, "Dado");
-	  strcpy (contatoTres.email, "roberto_dado@gmail.com");
-	  strcpy (contatoTres.fone, "519813123123");
-
-	  retorno = inserir (&cabecalho, contatoTres);
-	  printf ("tamanho %d \n", cabecalho.tamanho);
-
-	  strcpy (contatoQuatro.nome, "Carlos");
-	  strcpy (contatoQuatro.sobrenome, "Azul");
-	  strcpy (contatoQuatro.email, "carlos_azul@gmail.com");
-	  strcpy (contatoQuatro.fone, "519813123123");
-
-	  retorno = inserir (&cabecalho, contatoQuatro);
-	  printf ("tamanho %d \n", cabecalho.tamanho);
-
-	  printf ("%s \n", cabecalho.primeiro->dado.sobrenome);
-	  printf ("%s \n",
-		  cabecalho.primeiro->proximo->anterior->dado.sobrenome);
-
-	  printf ("%s \n", cabecalho.primeiro->proximo->dado.sobrenome);
-	  printf ("%s \n",
-		  cabecalho.primeiro->proximo->proximo->anterior->dado.
-		  sobrenome);
-
-	  printf ("%s \n",
-		  cabecalho.primeiro->proximo->proximo->dado.sobrenome);
-	  printf ("%s \n",
-		  cabecalho.primeiro->proximo->proximo->proximo->anterior->
-		  dado.sobrenome);
-
-	  printf ("%s \n",
-		  cabecalho.primeiro->proximo->proximo->proximo->dado.
-		  sobrenome);
-	  printf ("%s \n", cabecalho.ultimo->dado.sobrenome);
-
+	  
 	  break;
 
 	case REMOVER_CONTATO:
