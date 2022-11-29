@@ -53,15 +53,15 @@ main ()
     	  break;
     
     	case REMOVER_CONTATO:
-    	    printf("Digite qual posiÃ§Ã£o voce deja remover: ");
+    	    printf("Digite qual posicao voce deja remover: ");
             scanf("%i", &posicaoDeletar);
             
             retorno = deletar(&cabecalho, posicaoDeletar);
             if(retorno == 0){
-            printf("\n\nERRO nÃ£o foi possivel remover\n\n");
+            printf("\n\n Erro nao foi possivel remover\n\n");
             }
             if(retorno == 1){
-            printf("\n\nNÃ³ removido com sucesso\n\n");
+            printf("\n\nRemovido com sucesso\n\n");
             }
         break;
         
@@ -69,6 +69,11 @@ main ()
         
         printf("Digite a posicao que voce deseja visualizar: ");
         scanf("%d", &posicao);
+        
+        buscar(&cabecalho, posicao);
+        
+        
+        
         
         break;
     
