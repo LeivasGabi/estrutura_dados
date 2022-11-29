@@ -21,4 +21,4 @@ int inserir(Cabecalho *cabecalho, Contato contato);
 int deletar(Cabecalho *cabecalho, int posicaoDeletar);
 void imprimir(Cabecalho *cabecalho);
 void inicializar(Cabecalho *cabecalho);
-No* buscar(Cabecalho *cabecalho, int posicao);
+void buscar(Cabecalho *cabecalho, int posicao);
