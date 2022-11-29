@@ -150,7 +150,7 @@ int deletar(Cabecalho *cabecalho, int posicaoDeletar) {
     printf("%s\n ", aux->dado.fone);
     aux = aux->proximo;
     }
-printf("\n\n");
+	printf("\n\n");
 }
 No* buscar(No **lista, int num){
     No *aux, *no = NULL;
