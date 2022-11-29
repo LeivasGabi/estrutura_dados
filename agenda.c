@@ -121,13 +121,20 @@ int deletar(Cabecalho *cabecalho, int posicaoDeletar) {
     No *aux = cabecalho->primeiro;
     for (int i = 0; i < posicaoDeletar; i++) {
         aux = aux->proximo;
-        printf("%s\n", aux->dado.sobrenome);
     }
+    
     if (cabecalho->tamanho == 0) {
-    return false;
+        return false;
+    
     }else{
+        if (aux == NULL) {
+            return false;
+        }
+        
         if (cabecalho->primeiro == cabecalho->ultimo) {
+        cabecalho->primeiro = NULL;
         cabecalho->ultimo = NULL;
+        
         }else{
             aux->anterior->proximo = aux->proximo;
             aux->proximo->anterior = aux->anterior;
@@ -140,7 +147,7 @@ int deletar(Cabecalho *cabecalho, int posicaoDeletar) {
     
 }
 
- void imprimir(Cabecalho*cabecalho){
+void imprimir(Cabecalho*cabecalho){
     No *aux = cabecalho->primeiro;
     printf("\n\tLista: ");
     while(aux != NULL){
@@ -149,17 +156,24 @@ int deletar(Cabecalho *cabecalho, int posicaoDeletar) {
     printf("%s ", aux->dado.email);
     printf("%s\n ", aux->dado.fone);
     aux = aux->proximo;
+    
     }
 	printf("\n\n");
 }
-No* buscar(No **lista, int num){
-    No *aux, *no = NULL;
 
-    aux = *lista;
-    while(aux && aux->valor != num)
+void buscar(Cabecalho* cabecalho, int posicao){
+    No *aux = cabecalho->primeiro;
+    
+    for (int i = 0; i < posicao; i++) {
         aux = aux->proximo;
-    if(aux)
-        no = aux;
-    return no;
+    }
+    
+    if (aux == NULL) {
+        printf("Nao foi possivel encontrar o item na posicao %d!", posicao);
+    } else {
+        printf("%s ", aux->dado.nome);
+        printf("%s ", aux->dado.sobrenome);
+        printf("%s ", aux->dado.email);
+        printf("%s\n ", aux->dado.fone);
+    }
 }
-
