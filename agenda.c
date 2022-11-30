@@ -142,20 +142,20 @@ int deletar(Cabecalho *cabecalho, int posicaoDeletar) {
         cabecalho->tamanho--;
         free(aux);
         return true;
-        
     }
-    
 }
 
 void imprimir(Cabecalho*cabecalho){
     No *aux = cabecalho->primeiro;
-    printf("\n\tLista: ");
     while(aux != NULL){
-    printf("%s ", aux->dado.nome);
-    printf("%s ", aux->dado.sobrenome);
-    printf("%s ", aux->dado.email);
-    printf("%s\n ", aux->dado.fone);
+    printf("Nome - %s \n", aux->dado.nome);
+    printf("Sobrenome - %s \n", aux->dado.sobrenome);
+    printf("E-mail - %s \n", aux->dado.email);
+    printf("Celular - %s \n", aux->dado.fone);
+    printf("\n\n");
+
     aux = aux->proximo;
+    nContato++;
     
     }
 	printf("\n\n");
@@ -171,9 +171,10 @@ void buscar(Cabecalho* cabecalho, int posicao){
     if (aux == NULL) {
         printf("Nao foi possivel encontrar o item na posicao %d!", posicao);
     } else {
-        printf("%s ", aux->dado.nome);
-        printf("%s ", aux->dado.sobrenome);
-        printf("%s ", aux->dado.email);
-        printf("%s\n ", aux->dado.fone);
+    printf("Nome - %s \n", aux->dado.nome);
+    printf("Sobrenome - %s \n", aux->dado.sobrenome);
+    printf("E-mail - %s \n", aux->dado.email);
+    printf("Celular - %s \n", aux->dado.fone);
+    printf("\n\n");
     }
 }
