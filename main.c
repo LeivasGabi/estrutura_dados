@@ -72,9 +72,6 @@ main ()
         
         buscar(&cabecalho, posicao);
         
-        
-        
-        
         break;
     
     	case SAIR:
