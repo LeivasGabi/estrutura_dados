@@ -119,28 +119,51 @@ inserir (Cabecalho * cabecalho, Contato contato)
 
 int deletar(Cabecalho *cabecalho, int posicaoDeletar) {
     No *aux = cabecalho->primeiro;
+    
+    if (cabecalho->tamanho == 0) {
+        return false;
+    }
+    
+    if (cabecalho->primeiro == cabecalho->ultimo) {
+        cabecalho->primeiro = NULL;
+        cabecalho->ultimo = NULL;
+        
+        free(aux);
+        cabecalho->tamanho--;
+        return true;
+    }
+    
+    
     for (int i = 0; i < posicaoDeletar; i++) {
         aux = aux->proximo;
     }
     
-    if (cabecalho->tamanho == 0) {
+    if (aux == NULL) {
         return false;
-    
-    }else{
-        if (aux == NULL) {
-            return false;
-        }
+    }
         
-        if (cabecalho->primeiro == cabecalho->ultimo) {
-        cabecalho->primeiro = NULL;
-        cabecalho->ultimo = NULL;
+    if (aux -> proximo != NULL && aux -> anterior != NULL) {
+        aux->proximo->anterior = aux->anterior;
+        aux->anterior->proximo = aux->proximo;
         
-        }else{
-            aux->anterior->proximo = aux->proximo;
-            aux->proximo->anterior = aux->anterior;
-        }
-        cabecalho->tamanho--;
         free(aux);
+        cabecalho->tamanho--;
+        return true;
+    }
+    
+    if (aux -> anterior == NULL) {
+        aux -> proximo -> anterior = NULL;
+        cabecalho -> primeiro = aux -> proximo;
+        free(aux);
+        cabecalho->tamanho--;
+        return true;
+    }
+    
+    if (aux -> proximo == NULL) {
+        aux -> anterior -> proximo = NULL;
+        cabecalho -> ultimo = aux -> anterior;
+        free(aux);
+        cabecalho->tamanho--;
         return true;
     }
 }
@@ -155,7 +178,6 @@ void imprimir(Cabecalho*cabecalho){
     printf("\n\n");
 
     aux = aux->proximo;
-    nContato++;
     
     }
 	printf("\n\n");
